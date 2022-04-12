@@ -7,6 +7,9 @@ import { TeacherPageComponent } from './components/teacher-page/teacher-page.com
 import { CoursePageComponent } from './components/course-page/course-page.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CourseEditComponent } from './components/course-page/course-edit/course-edit.component';
+import { StudentEditComponent } from './components/student-page/student-edit/student-edit.component';
+import { TeacherEditComponent } from './components/teacher-page/teacher-edit/teacher-edit.component';
 
 const routes: Routes = [
   {
@@ -22,6 +25,9 @@ const routes: Routes = [
     StudentPageComponent,
     TeacherPageComponent,
     CoursePageComponent,
+    CourseEditComponent,
+    StudentEditComponent,
+    TeacherEditComponent,
   ],
   imports: [
     CommonModule,

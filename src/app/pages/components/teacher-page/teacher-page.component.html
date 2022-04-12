@@ -1,1 +1,57 @@
-<p>teacher-page works!</p>
+<div class="overflow-x-auto w-full">
+  <table class="table w-full">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>Row No.</th>
+        <th>student Name</th>
+        <th>Aquired Classes</th>
+        <th>Email & Phone</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- row 1 -->
+      <ng-container *ngFor="let teacher of Teachers; let i = index">
+        <tr>
+          <th>{{ teacher.RowNo }}.</th>
+          <td>
+            <div class="flex items-center space-x-3">
+              <div>
+                <div class="font-bold">{{ teacher.firstName }}</div>
+                <div class="text-sm opacity-50">{{ teacher.lastName }}</div>
+              </div>
+            </div>
+          </td>
+          <td>
+            {{ teacher.teacherNumber }}
+          </td>
+          <td>
+            {{ teacher.phoneNumber }} <br />
+            <span class="badge badge-ghost badge-sm">{{
+              teacher.emailAddress
+            }}</span>
+          </td>
+          <th>
+            <button
+              class="btn btn-ghost btn-xs"
+              (click)="onEdit(teacher.RowNo)"
+            >
+              edit
+            </button>
+          </th>
+        </tr>
+      </ng-container>
+    </tbody>
+    <!-- foot -->
+    <tfoot>
+      <tr>
+        <th>Row No.</th>
+        <th>student Name</th>
+        <th>Aquired Classes</th>
+        <th>Email & Phone</th>
+        <th></th>
+      </tr>
+    </tfoot>
+  </table>
+</div>

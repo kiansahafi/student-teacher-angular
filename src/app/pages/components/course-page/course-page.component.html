@@ -1,1 +1,53 @@
-<p>course-page works!</p>
+<div class="overflow-x-auto w-full">
+  <table class="table w-full">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>Row No.</th>
+        <th>Title</th>
+        <th>Teacher</th>
+        <th>Course Time</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- row 1 -->
+      <ng-container *ngFor="let course of Courses; let i = index">
+        <tr>
+          <th>{{ course.RowNo }}.</th>
+          <td>
+            <div class="flex items-center space-x-3">
+              <div>
+                <div class="font-bold">{{ course.Title }}</div>
+                <div class="text-sm opacity-50">{{ course.CourseNumber }}</div>
+              </div>
+            </div>
+          </td>
+          <td>
+            {{ course.Teacher }}
+            <br />
+            <span class="badge badge-ghost badge-sm">{{
+              course.Teacher.teacherNumber
+            }}</span>
+          </td>
+          <td>{{ course.CourseTime }}</td>
+          <th>
+            <button class="btn btn-ghost btn-xs" (click)="OnEdit(course.RowNo)">
+              edit
+            </button>
+          </th>
+        </tr>
+      </ng-container>
+    </tbody>
+    <!-- foot -->
+    <tfoot>
+      <tr>
+        <th>Row No.</th>
+        <th>Title</th>
+        <th>Teacher</th>
+        <th>Course Time</th>
+        <th></th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
