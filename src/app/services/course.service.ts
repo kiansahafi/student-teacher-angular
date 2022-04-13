@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class CourseService {
   public CourseInfo: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  private serverUrl: string = 'https://tavana-node.herokuapp.com/Course/';
   constructor(private http: HttpClient) {}
 
   public get getCourseInfo(): Observable<any[]> {
@@ -25,23 +26,24 @@ export class CourseService {
   //     }),
   //   };
   // }
+
   getCourseById(courseid: any) {
     return this.http.get(
-      'https://tavana-node.herokuapp.com/Course/' + '{' + courseid + '}'
+      this.serverUrl + courseid
       // this.headerOptions
     );
   }
 
   deleteCourseById(courseid: string) {
     return this.http.delete(
-      'https://tavana-node.herokuapp.com/Course/' + '{' + courseid + '}'
+      this.serverUrl + courseid
       // this.headerOptions
     );
   }
 
   AddCourse(courseInfo?: any) {
     return this.http.post(
-      'https://tavana-node.herokuapp.com/Course',
+      this.serverUrl,
       courseInfo
       // this.headerOptions
     );
@@ -49,14 +51,14 @@ export class CourseService {
 
   editCourse(courseInfo: any) {
     return this.http.put(
-      'https://tavana-node.herokuapp.com/auth/Course',
+      this.serverUrl,
       courseInfo
       // this.headerOptions
     );
   }
   getCourse(courseInfo?: any) {
     return this.http.get(
-      'https://tavana-node.herokuapp.com/Course',
+      this.serverUrl,
       courseInfo
       // this.headerOptions
     );

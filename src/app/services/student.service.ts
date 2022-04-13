@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class StudentService {
   public StudentInfo: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  private serverUrl = 'https://tavana-node.herokuapp.com/Student/';
   constructor(private http: HttpClient) {}
 
   public get getStudentInfo(): Observable<any[]> {
@@ -27,21 +28,21 @@ export class StudentService {
   // }
   getStudentById(studentid: any) {
     return this.http.get(
-      'https://tavana-node.herokuapp.com/Student/' + '{' + studentid + '}'
+      this.serverUrl + studentid
       // this.headerOptions
     );
   }
 
   deleteStudentById(studentid: string) {
     return this.http.delete(
-      'https://tavana-node.herokuapp.com/Student/' + '{' + studentid + '}'
+      this.serverUrl + studentid
       // this.headerOptions
     );
   }
 
   AddStudent(studentInfo?: any) {
     return this.http.post(
-      'https://tavana-node.herokuapp.com/Student',
+      this.serverUrl,
       studentInfo
       // this.headerOptions
     );
@@ -49,14 +50,14 @@ export class StudentService {
 
   editStudent(studentInfo: any) {
     return this.http.put(
-      'https://tavana-node.herokuapp.com/auth/Student',
+      this.serverUrl,
       studentInfo
       // this.headerOptions
     );
   }
   getStudent(studentInfo?: any) {
     return this.http.get(
-      'https://tavana-node.herokuapp.com/Student',
+      this.serverUrl,
       studentInfo
       // this.headerOptions
     );

@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class TeacherService {
   public TeacherInfo: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  private serverUrl: string = 'https://tavana-node.herokuapp.com/Teacher/';
 
   constructor(private http: HttpClient) {}
 
@@ -17,6 +18,7 @@ export class TeacherService {
   public set setTeacherInfo(teacherInfo: any) {
     this.TeacherInfo.next(teacherInfo);
   }
+
   // public get headerOptions(): any {
   //   return {
   //     headers: new HttpHeaders({
@@ -25,23 +27,24 @@ export class TeacherService {
   //     }),
   //   };
   // }
+
   getTeacherById(teacherid: any) {
     return this.http.get(
-      'https://tavana-node.herokuapp.com/Teacher/' + '{' + teacherid + '}'
+      this.serverUrl + teacherid
       // this.headerOptions
     );
   }
 
   deleteTeacherById(teacherid: string) {
     return this.http.delete(
-      'https://tavana-node.herokuapp.com/Teacher/' + '{' + teacherid + '}'
+      this.serverUrl + teacherid
       // this.headerOptions
     );
   }
 
   AddTeacher(teacherInfo?: any) {
     return this.http.post(
-      'https://tavana-node.herokuapp.com/Teacher',
+      this.serverUrl,
       teacherInfo
       // this.headerOptions
     );
@@ -49,14 +52,14 @@ export class TeacherService {
 
   editTeacher(teacherInfo: any) {
     return this.http.put(
-      'https://tavana-node.herokuapp.com/auth/Teacher',
+      this.serverUrl,
       teacherInfo
       // this.headerOptions
     );
   }
   getTeacher(teacherInfo?: any) {
     return this.http.get(
-      'https://tavana-node.herokuapp.com/Teacher',
+      this.serverUrl,
       teacherInfo
       // this.headerOptions
     );
