@@ -20,4 +20,8 @@ export class StudentPageComponent implements OnInit {
   onEdit(id: string) {
     this.router.navigate(['Students-Page/' + id]);
   }
+
+  AddNewItem() {
+    this.router.navigate(['Students-Page/Insert']);
+  }
 }

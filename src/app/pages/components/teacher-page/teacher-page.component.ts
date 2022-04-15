@@ -18,4 +18,8 @@ export class TeacherPageComponent implements OnInit {
   onEdit(id: string) {
     this.router.navigate(['Teacher-Page/' + id]);
   }
+
+  AddNewItem() {
+    this.router.navigate(['Teacher-Page/Insert']);
+  }
 }

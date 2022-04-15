@@ -21,4 +21,8 @@ export class CoursePageComponent implements OnInit {
     //in here you should take the id of the item and navigate to the edit page
     this.router.navigate(['Courses-Page/' + id]);
   }
+
+  AddNewItem() {
+    this.router.navigate(['Courses-Page/Insert']);
+  }
 }

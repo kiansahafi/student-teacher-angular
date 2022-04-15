@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StudentService {
   public StudentInfo: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-  private serverUrl = 'https://tavana-node.herokuapp.com/Student/';
+  private serverUrl = environment.serverAddress;
   constructor(private http: HttpClient) {}
 
   public get getStudentInfo(): Observable<any[]> {
