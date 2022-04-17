@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CourseEditComponent } from './components/course-page/course-edit/course-edit.component';
 import { StudentEditComponent } from './components/student-page/student-edit/student-edit.component';
 import { TeacherEditComponent } from './components/teacher-page/teacher-edit/teacher-edit.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatButtonModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
   ],
 })
 export class PagesModule {}

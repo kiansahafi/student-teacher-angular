@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class StudentEditComponent implements OnInit {
   private isOnEditMode: boolean = false;
   private studentId: string = '';
+  courses: any[] = [];
   email = new FormControl('');
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -19,25 +20,23 @@ export class StudentEditComponent implements OnInit {
     FirstName: '',
     LastName: '',
     EmailAddress: ['', Validators.email],
-    Country: '',
-    StreetAddress: '',
-    City: '',
-    Region: '',
-    PostalCode: '',
+    course: '',
+    PhoneNumber: '',
   });
 
   constructor(
     private formbuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(this.onRouteChange.bind(this));
+    //should call the backend and fill the courses[] array with data
   }
 
   onRouteChange(res: any) {
     if (res[1].path == 'edit') {
+      this.isOnEditMode = true;
       this.studentId = res[2].path;
       this.getData();
     } else if (res[1].path == 'Insert') {

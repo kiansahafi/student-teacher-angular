@@ -4,6 +4,6 @@ import { Teacher } from './Teacher.model';
 export interface Course extends BaseModel {
   Title: string;
   CourseNumber: number;
-  Teacher: Teacher;
+  Teacher: string;
   CourseTime: string;
 }
