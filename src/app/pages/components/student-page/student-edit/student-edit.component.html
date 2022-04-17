@@ -24,6 +24,7 @@
                 <input
                   type="text"
                   name="first-name"
+                  formControlName="FirstName"
                   id="first-name"
                   autocomplete="given-name"
                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -39,6 +40,7 @@
                 <input
                   type="text"
                   name="last-name"
+                  formControlName="LastName"
                   id="last-name"
                   autocomplete="family-name"
                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -54,10 +56,26 @@
                 <input
                   type="text"
                   name="email-address"
+                  formControlName="EmailAddress"
                   id="email-address"
                   autocomplete="email"
                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                 />
+                <div
+                  mat-dialog-content
+                  *ngIf="
+                    emailFormControl.hasError('email') &&
+                    !emailFormControl.hasError('required')
+                  "
+                >
+                  Please enter a valid email address
+                </div>
+                <div
+                  mat-dialog-content
+                  *ngIf="emailFormControl.hasError('required')"
+                >
+                  Email is <strong>required</strong>
+                </div>
               </div>
 
               <div class="col-span-6 sm:col-span-3">
@@ -69,6 +87,7 @@
                 <select
                   id="country"
                   name="country"
+                  formControlName="Country"
                   autocomplete="country-name"
                   class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 >
@@ -87,6 +106,7 @@
                 <input
                   type="text"
                   name="street-address"
+                  formControlName="StreetAddress"
                   id="street-address"
                   autocomplete="street-address"
                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -102,6 +122,7 @@
                 <input
                   type="text"
                   name="city"
+                  formControlName="City"
                   id="city"
                   autocomplete="address-level2"
                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -117,6 +138,7 @@
                 <input
                   type="text"
                   name="region"
+                  formControlName="Region"
                   id="region"
                   autocomplete="address-level1"
                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -132,6 +154,7 @@
                 <input
                   type="text"
                   name="postal-code"
+                  formControlName="PostalCode"
                   id="postal-code"
                   autocomplete="postal-code"
                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -142,6 +165,7 @@
           <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <button
               type="submit"
+              (click)="onSubmit()"
               class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Save
